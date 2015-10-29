@@ -4,8 +4,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Alex Moshta",
-            "email": "ahonymous@gmail.com"
+            "name": "Mihail Pronyuk",
+            "email": "mishaprk@gmail.com"
         }
     ],
     "autoload": {
@@ -15,7 +15,6 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.5.0",
-        "ext-mysqlnd": "*"
+        "php": ">=5.5.0"
     }
 }
