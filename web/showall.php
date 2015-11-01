@@ -5,6 +5,9 @@
     <tr id="table_header">
         <td><b>#</b></td>
         <td><b>eng_word</b></td>
+        <td><b>#</b></td>
+        <td><b>ua_word</b></td>
+        <td><b><small>edit</small></b></td>
     </tr>
     <?php
     //var_dump($_POST['response']);
@@ -15,6 +18,9 @@
     foreach ($arr as $key => $value) {
         foreach ($arr[$key] as $keyfield => $valuefield) {
             print "<td>" . $valuefield . " </td>";
+            if ($keyfield == 'ua_word'){
+               echo "<td>e</td>";
+            }
         };
         print "</tr>";
     }
