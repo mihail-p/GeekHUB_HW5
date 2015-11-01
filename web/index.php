@@ -4,24 +4,45 @@ require __DIR__ . '/../config/autoload.php';
 
 use Layer\Connector\ConnectBase;
 use Layer\Manager\CrTables;
+use Models\Word\EngWord;
+
 echo "Hi ALL__!";
 
-//print_r('<br /> show databases:<br />');
-
-$user=$config['db_user']; $pass=$config['db_password'];
-
+$user=$config['db_user'];
+$pass=$config['db_password'];
 $dsn='mysql:host='.$config['host'].';dbname='.$config['db_name'];
-//try {
-//echo$dsn;
-    //$dbh = new PDO($dsn, $user, $pass);
-    $dbh = new ConnectBase();
-    $stmt = $dbh->connect($dsn,$user, $pass);
-    $stmt = $dbh->getPdo();
+
+$dbh = new ConnectBase();
+$stmt = $dbh->connect($dsn,$user, $pass);
+$stmt = $dbh->getPdo();
 //echo"1 ok ";
+include 'main.php';
+
+if (isset($_POST['create'])){
     $word = new CrTables($stmt);
-    $word->crEngword();
-    $word->crRuword();
+    $word->crEngWord();
+    $word->crUaWord();
     $word->crExample();
+}
+
+/*$post['eng_word'] = 'positive_2';
+$post['id_en'] = '7';
+$ins = new EngWord($stmt);
+if (isset($_POST['insert'])){
+    include 'add.php';
+    $ins->insert($post);
+} */
+//
+//$ins->update($post);
+//$ins->remove($post);
+
+if (isset($_POST['find_all'])) {
+    $ins = new EngWord($stmt);
+    $response = $ins->findAll();
+    include 'showall.php';
+}
+
+
 
 /*    $stmt = $dbh->getPdo()->prepare('show databases');
     $stmt->execute();
@@ -33,8 +54,4 @@ $dsn='mysql:host='.$config['host'].';dbname='.$config['db_name'];
     }
 */
     $dbh->connectClose($dbh);
-/*} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-} */
 

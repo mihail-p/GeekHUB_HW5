@@ -12,7 +12,7 @@ class CrTables extends ConnectBase
     {
         $this->connector = $connector;
     }
-    public function crEngword()
+    public function crEngWord()
     {
         $query = "
            CREATE TABLE IF NOT EXISTS eng_word (
@@ -28,16 +28,15 @@ class CrTables extends ConnectBase
 
     }
 
-    public function crRuword()
+    public function crUaWord()
     {
         $query = "
-           CREATE TABLE IF NOT EXISTS ru_word (
-           id_ru INT AUTO_INCREMENT,
-           ru_word varchar(50) NOT NULL,
-           PRIMARY KEY (id_ru))";
+           CREATE TABLE IF NOT EXISTS ua_word (
+           id_ua INT,
+           ua_word varchar(50) NOT NULL)";
         $result = $this->connector->exec($query);
-        if ($result === false) {echo 'Table "ru_word" NOT created<br />';} else {
-            echo 'Table "ru_word" was created<br />';
+        if ($result === false) {echo 'Table "ua_word" NOT created<br />';} else {
+            echo 'Table "ua_word" was created<br />';
         }
     }
 
