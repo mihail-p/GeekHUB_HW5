@@ -54,7 +54,7 @@ class EngWord implements ManagerInterface
                   VALUES(:eng_word)";
         $result = $this->connector->prepare($query);
         $result->bindValue(':eng_word', $entity['eng_word']);
-        echo'<small>word:</small>'.$entity['eng_word'].' <small>added.</small>';
+        echo'<small>word: </small>'.$entity['eng_word'].' <small>(en) added.</small>';
         return $result->execute();
     }
 

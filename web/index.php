@@ -14,7 +14,6 @@ $dsn='mysql:host='.$config['host'].';dbname='.$config['db_name'];
 $dbh = new ConnectBase();
 $stmt = $dbh->connect($dsn,$user, $pass);
 $stmt = $dbh->getPdo();
-//echo"1 ok ";
 include 'main.php';
 
 if (isset($_POST['create'])){
@@ -24,15 +23,6 @@ if (isset($_POST['create'])){
     $word->crExample();
 }
 
-/*$post['eng_word'] = 'positive_2';
-$post['id_en'] = '7';
-$ins = new EngWord($stmt);
-if (isset($_POST['insert'])){
-    include 'add.php';
-    $ins->insert($post);
-} */
-//
-//$ins->update($post);
 //$ins->remove($post);
 
 if (isset($_POST['find_all'])) {
@@ -46,11 +36,6 @@ if (isset($_POST['find_all_vocab'])) {
     var_dump($response);
     include 'showall.php';
 }
-/*if (isset($_POST['update'])) {
-    $ins = new UaWord($stmt);
-    $response = $ins->findAll();
-    include 'showall.php';
-} */
 if (isset($_POST['update'])) {
     $ins = new UaWord($stmt);
     $ins->update($_POST);

@@ -17,23 +17,32 @@ $dbh = new ConnectBase();
 $stmt = $dbh->connect($dsn,$user, $pass);
 $stmt = $dbh->getPdo();
 ?>
-    <h3>Add word</h3>
+Add word to <b><i>vocabulary</i></b><br />
     <hr />
-    add word to <b><i>vocabulary</i></b>
         <form method="post" action="add.php">
-            <input type="text" name="eng_word">eng_word<br />
-            <input type="text" name="ua_word">ua_word<br />
-            <input type="text" name="example">example<br />
+            Input <i>english</i> word<br />
+            <input type="text" name="eng_word"><br />
+            Input <i>ua/ru</i> translation<br />
+            <input type="text" name="ua_word"><br />
+            example<br />
+            <input type="text" name="example"><br />
+            <input type="hidden" name="inp_check">
             <input type="submit" value="add data"/>
         </form>
+
 <?php
-$post['eng_word'] = 'positive_2';
-$post['id_en'] = '7';
+// $post['eng_word'] = 'positive_2';
+// $post['id_en'] = '7';
 $ins = new EngWord($stmt);
-if (isset($_POST['eng_word'])) {
-    $ins->insert($_POST);
+if (isset($_POST['inp_check'])){
+    if (isset($_POST['eng_word']) && ($_POST['eng_word']!="")) {
+        $ins->insert($_POST);
+    } else {
+        echo "Input <b>correct</b> <i>english</i> word";
+    }
 }
-if (isset($_POST['ua_word'])) {
+
+if (isset($_POST['ua_word']) && ($_POST['eng_word']!="")) {
     //echo' ua_word<br />';
     $response = $ins->findName($_POST);
     $_POST['id_en'] = $response['id_en'];

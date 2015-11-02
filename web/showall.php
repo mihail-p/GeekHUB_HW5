@@ -38,7 +38,7 @@
             }
             if ($keyfield == 'ua_word') {
                 print "<td>" . $valuefield . " </td>";
-                echo "<td><a href=edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$valuefield  style='color: olivedrab'>edit</a></td>";
+                echo "<td><a href=edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$valuefield  style='color: olivedrab' title='edit translation'>edit</a></td>";
             }
         };
         print "</tr>";

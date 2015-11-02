@@ -20,7 +20,7 @@ class UaWord implements ManagerInterface
         $result = $this->connector->prepare($query);
         $result->bindValue(':id_en', $entity['id_en']);
         $result->bindValue(':ua_word', $entity['ua_word']);
-        echo'<small> word:</small>'.$entity['ua_word'].' <small>added.</small>';
+        echo'<small> word: </small>'.$entity['ua_word'].' <small>(ua) added.</small>';
 
         return $result->execute();
     }
