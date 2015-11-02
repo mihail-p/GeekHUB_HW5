@@ -16,7 +16,7 @@ class Vocabulary
     {
         $query = "SELECT *
                   FROM eng_word en LEFT OUTER JOIN
-                  ua_word ua ON en.id_en = ua.id_ua LIMIT 100";
+                  ua_word ua ON en.id_en = ua.id_1 LIMIT 100";
         $result = $this->connector->prepare($query);
         //$result->bindValue(':id_ua', $entity['id_ua']);
         $result->execute();
@@ -28,7 +28,7 @@ class Vocabulary
     {
         $query = "SELECT *
                   FROM eng_word en INNER JOIN
-                  ua_word ua ON en.id_en = ua.id_ua LIMIT 100";
+                  ua_word ua ON en.id_en = ua.id_1 LIMIT 100";
         $result = $this->connector->prepare($query);
         //$result->bindValue(':id_ua', $entity['id_ua']);
         $result->execute();
@@ -44,6 +44,7 @@ class Vocabulary
                 'id_en' => $result['id_en'],
                 'eng_word' => $result['eng_word'],
                 'id_ua' => $result['id_ua'],
+                'id_1' => $result['id_1'],
                 'ua_word' => $result['ua_word'],
             ];
         }

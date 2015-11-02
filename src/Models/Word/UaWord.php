@@ -15,12 +15,12 @@ class UaWord implements ManagerInterface
     }
     public function insert($entity)
     {
-        $query = "INSERT INTO ua_word (id_ua, ua_word)
+        $query = "INSERT INTO ua_word (id_1, ua_word)
                   VALUES(:id_en, :ua_word)";
         $result = $this->connector->prepare($query);
         $result->bindValue(':id_en', $entity['id_en']);
         $result->bindValue(':ua_word', $entity['ua_word']);
-        echo'word:'.$entity['ua_word'].' added';
+        echo'<small> word:</small>'.$entity['ua_word'].' <small>added.</small>';
 
         return $result->execute();
     }
@@ -28,10 +28,12 @@ class UaWord implements ManagerInterface
     public function update($entity)
     {
         $query = "UPDATE ua_word SET
-                  ua_word = :ua_word
+                  ua_word = :ua_word,
+                  id_1 = :id_1
                   WHERE id_ua = :id_ua";
         $result = $this->connector->prepare($query);
         $result->bindValue(':ua_word', $entity['ua_word']);
+        $result->bindValue(':id_1', $entity['id_1']);
         $result->bindValue(':id_ua', $entity['id_ua']);
 
         return $result->execute();

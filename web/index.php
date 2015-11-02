@@ -3,10 +3,9 @@
 require __DIR__ . '/../config/autoload.php';
 
 use Layer\Connector\ConnectBase;
-use Layer\Manager\CrTables;
+use Models\Word\CrTables;
 use Models\Word\Vocabulary;
-
-echo "<H1>HW 4</H1>";
+use Models\Word\UaWord;
 
 $user=$config['db_user'];
 $pass=$config['db_password'];
@@ -47,6 +46,16 @@ if (isset($_POST['find_all_vocab'])) {
     var_dump($response);
     include 'showall.php';
 }
+/*if (isset($_POST['update'])) {
+    $ins = new UaWord($stmt);
+    $response = $ins->findAll();
+    include 'showall.php';
+} */
+if (isset($_POST['update'])) {
+    $ins = new UaWord($stmt);
+    $ins->update($_POST);
+}
+
 
     $dbh->connectClose($dbh);
 

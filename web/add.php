@@ -34,7 +34,7 @@ if (isset($_POST['eng_word'])) {
     $ins->insert($_POST);
 }
 if (isset($_POST['ua_word'])) {
-    echo' ua_word<br />';
+    //echo' ua_word<br />';
     $response = $ins->findName($_POST);
     $_POST['id_en'] = $response['id_en'];
     $ins = new UaWord($stmt);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Layer\Manager;
+namespace Models\Word;
 
 use Layer\Connector\ConnectBase;
 
@@ -32,8 +32,10 @@ class CrTables extends ConnectBase
     {
         $query = "
            CREATE TABLE IF NOT EXISTS ua_word (
-           id_ua INT,
-           ua_word varchar(50) NOT NULL)";
+           id_ua INT AUTO_INCREMENT,
+           id_1 INT,
+           ua_word varchar(50) NOT NULL,
+           PRIMARY KEY (id_ua))";
         $result = $this->connector->exec($query);
         if ($result === false) {echo 'Table "ua_word" NOT created<br />';} else {
             echo 'Table "ua_word" was created<br />';

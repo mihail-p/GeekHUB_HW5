@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Own vocabulary</title>
-</head>
-<body>
-
-<h1>Own vocabulary</h1>
-<h2><a href="index.php">Controller</a></h2>
+<?php
+include'head.html';
+?>
 <ul>
     <li><a href="add.php">Add word</a></li>
     <li><a href="remove.php">Remove word</a></li>
