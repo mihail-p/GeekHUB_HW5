@@ -58,6 +58,7 @@ class Vocabulary
                 'ua_word' => $result['ua_word'],
             ];
         }
+
         return $results;
     }
 }

@@ -35,9 +35,14 @@ if (isset($_POST['find_all_vocab'])) {
     include './view/showall.php';
 }
 if (isset($_POST['find_by_name'])) {
-    $ins = new Vocabulary($stmt);
-    $response = $ins->findByName($_POST);
-    include './view/showWord.php';
+    if (isset($_POST['eng_word']) && $_POST['eng_word'] != ""){
+        $ins = new Vocabulary($stmt);
+        $response = $ins->findByName($_POST);
+        include './view/showWord.php';
+    } else {
+        echo '<p>word <b>not set!</b></p>';
+    }
+
 }
 if (isset($_POST['more_trans'])) {
     $ins = new UaWord($stmt);
