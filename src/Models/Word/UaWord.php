@@ -2,7 +2,6 @@
 
 namespace Models\Word;
 
-
 use Layer\Manager\ManagerInterface;
 
 class UaWord implements ManagerInterface
@@ -13,6 +12,7 @@ class UaWord implements ManagerInterface
     {
         $this->connector = $connector;
     }
+
     public function insert($entity)
     {
         $query = "INSERT INTO ua_word (id_1, ua_word)
@@ -20,7 +20,7 @@ class UaWord implements ManagerInterface
         $result = $this->connector->prepare($query);
         $result->bindValue(':id_en', $entity['id_en']);
         $result->bindValue(':ua_word', $entity['ua_word']);
-        echo'<small> word: </small>'.$entity['ua_word'].' <small>(ua) added.</small>';
+        echo '<small> word: </small>' . $entity['ua_word'] . ' <small>(ua) added.</small>';
 
         return $result->execute();
     }
@@ -76,7 +76,6 @@ class UaWord implements ManagerInterface
     {
         $query = "SELECT * FROM eng_word";
         $result = $this->connector->prepare($query);
-        //$result->bindValue(':id_ua', $entity['id_ua']);
         $result->execute();
 
         return $this->fetchEngWord($result);

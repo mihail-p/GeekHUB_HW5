@@ -12,6 +12,7 @@ class CrTables extends ConnectBase
     {
         $this->connector = $connector;
     }
+
     public function crEngWord()
     {
         $query = "
@@ -20,9 +21,10 @@ class CrTables extends ConnectBase
            eng_word varchar(50) NOT NULL,
            PRIMARY KEY (id_en))";
         $result = $this->connector->exec($query);
-        //echo'<br />result: ';
         var_dump($result);
-        if ($result === false) {echo 'Table "eng_word" NOT created<br />';} else {
+        if ($result === false) {
+            echo 'Table "eng_word" NOT created<br />';
+        } else {
             echo 'Table "eng_word" was created<br />';
         }
 
@@ -37,7 +39,9 @@ class CrTables extends ConnectBase
            ua_word varchar(50) NOT NULL,
            PRIMARY KEY (id_ua))";
         $result = $this->connector->exec($query);
-        if ($result === false) {echo 'Table "ua_word" NOT created<br />';} else {
+        if ($result === false) {
+            echo 'Table "ua_word" NOT created<br />';
+        } else {
             echo 'Table "ua_word" was created<br />';
         }
     }
@@ -50,7 +54,9 @@ class CrTables extends ConnectBase
            example varchar(255) NOT NULL,
            PRIMARY KEY (id_ex))";
         $result = $this->connector->exec($query);
-        if ($result === false) {echo 'Table "example" NOT created<br />';} else {
+        if ($result === false) {
+            echo 'Table "example" NOT created<br />';
+        } else {
             echo 'Table "example" was created<br />';
         }
     }

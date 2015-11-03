@@ -2,59 +2,24 @@
 
 namespace Models\Word;
 
-
-use Layer\Connector\ConnectBase;
 use Layer\Manager\ManagerInterface;
 
 class EngWord implements ManagerInterface
 {
-    //private $id_en;
-    //private $eng_word;
     private $connector;
 
     public function __construct($connector)
     {
         $this->connector = $connector;
     }
-    /**
-     * @return mixed
-     */
-    /*public function getIdEn()
-    {
-        return $this->id_en;
-    }
 
-    /**
-     * @param mixed $id_en
-     */
-   /* public function setIdEn($id_en)
-    {
-        $this->id_en = $id_en;
-    }
-
-    /**
-     * @return mixed
-     */
-   /* public function getEngWord()
-    {
-        return $this->eng_word;
-    }
-
-    /**
-     * @param mixed $eng_word
-     */
-   /* public function setEngWord($eng_word)
-    {
-        $this->eng_word = $eng_word;
-    }
-*/
     public function insert($entity)
     {
         $query = "INSERT INTO eng_word (eng_word)
                   VALUES(:eng_word)";
         $result = $this->connector->prepare($query);
         $result->bindValue(':eng_word', $entity['eng_word']);
-        echo'<small>word: </small>'.$entity['eng_word'].' <small>(en) added.</small>';
+        echo '<small>word: </small>' . $entity['eng_word'] . ' <small>(en) added.</small>';
         return $result->execute();
     }
 
@@ -109,14 +74,14 @@ class EngWord implements ManagerInterface
             $results[] = [
                 'id_en' => $result['id_en'],
                 'eng_word' => $result['eng_word'],
-                ];
-    }
-    return $results;
+            ];
+        }
+        return $results;
     }
 
     private function fetchName($statement)
     {
-        $result =$statement->fetch();
+        $result = $statement->fetch();
         return $result;
     }
 
@@ -124,7 +89,6 @@ class EngWord implements ManagerInterface
     {
         $query = "SELECT * FROM eng_word";
         $result = $this->connector->prepare($query);
-        //$result->bindValue(':id_en', $entity['id_en']);
         $result->execute();
 
         return $this->fetchEngWord($result);

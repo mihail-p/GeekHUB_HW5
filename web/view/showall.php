@@ -4,17 +4,15 @@
 <table border='1'>
     <tr id="table_header">
         <td><b>#</b></td>
-        <td><b>eng_word</b></td>
+        <td><b>eng word</b></td>
         <td><b>#</b></td>
-        <td><b>ua_word</b></td>
+        <td><b>ua/ru word</b></td>
         <td><b>
                 <small>edit</small>
-            </b></td>
+            </b>
+        </td>
     </tr>
     <?php
-    //var_dump($_POST['response']);
-    //var_dump($response);
-
     $arr = $response;
     print "<tr>";
     $eng_word = '';
@@ -38,10 +36,17 @@
             }
             if ($keyfield == 'ua_word') {
                 print "<td>" . $valuefield . " </td>";
-                echo "<td><a href=edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$valuefield  style='color: olivedrab' title='edit translation'>edit</a></td>";
+                echo "<td><a href=./view/edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$valuefield  style='color: olivedrab' title='edit translation'>edit</a></td>";
             }
         };
         print "</tr>";
     }
     ?>
 </table>
+<form method="post" action="../index.php">
+    <p>Remove <i>english</i> word with id:
+        <input type="hidden" name="remove">
+        <input type="text" name="id_en" maxlength="2" size="2">
+        <input type="submit" value="remove">
+    </p>
+</form>

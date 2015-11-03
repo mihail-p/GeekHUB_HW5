@@ -2,7 +2,6 @@
 
 namespace Models\Word;
 
-
 class Vocabulary
 {
     private $connector;
@@ -18,7 +17,6 @@ class Vocabulary
                   FROM eng_word en LEFT OUTER JOIN
                   ua_word ua ON en.id_en = ua.id_1 LIMIT 100";
         $result = $this->connector->prepare($query);
-        //$result->bindValue(':id_ua', $entity['id_ua']);
         $result->execute();
 
         return $this->fetchEngWord($result);
@@ -30,7 +28,19 @@ class Vocabulary
                   FROM eng_word en INNER JOIN
                   ua_word ua ON en.id_en = ua.id_1 LIMIT 100";
         $result = $this->connector->prepare($query);
-        //$result->bindValue(':id_ua', $entity['id_ua']);
+        $result->execute();
+
+        return $this->fetchEngWord($result);
+    }
+
+    public function findByName($entity)
+    {
+        $query = "SELECT *
+                  FROM eng_word en INNER JOIN
+                  ua_word ua ON en.id_en = ua.id_1
+                  WHERE en.eng_word = :eng_word LIMIT 100";
+        $result = $this->connector->prepare($query);
+        $result->bindValue(':eng_word', $entity['eng_word']);
         $result->execute();
 
         return $this->fetchEngWord($result);
@@ -51,8 +61,3 @@ class Vocabulary
         return $results;
     }
 }
-/*SELECT en.id_en, en.eng_word, ua.id_ua, ua.ua_word
-                  FROM eng_word en, ua_word ua
-                  WHERE en.id_en = ua.id_ua";
-
-*/
