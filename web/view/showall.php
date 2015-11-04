@@ -3,14 +3,15 @@
 </p>
 <table border='1'>
     <tr id="table_header">
-        <td><b>#</b></td>
-        <td><b>eng word</b></td>
-        <td><b>#</b></td>
-        <td><b>ua/ru word</b></td>
-        <td><b>
+        <th><b>#</b></th>
+        <th><b>eng word</b></th>
+        <th><b>#</b></th>
+        <th><b>ua/ru word</b></th>
+        <th><b>example</b></th>
+        <th><b>
                 <small>edit</small>
             </b>
-        </td>
+        </th>
     </tr>
     <?php
     $arr = $response;
@@ -36,8 +37,15 @@
             }
             if ($keyfield == 'ua_word') {
                 print "<td>" . $valuefield . " </td>";
-                echo "<td><a href=./view/edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$valuefield  style='color: olivedrab' title='edit translation'>edit</a></td>";
+                $ua_word = $valuefield;
             }
+            if ($keyfield == 'example') {
+                print "<td>" . $valuefield . " </td>";
+
+                echo "<td><a href=./view/edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$ua_word style='color: olivedrab' title='edit translation'>edit</a></td>";
+            }
+
+
         };
         print "</tr>";
     }

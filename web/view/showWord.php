@@ -10,6 +10,7 @@ if (count($response) >= 1) {
         <tr id="table_header">
             <th><small>eng</small></th>
             <th><small>ua/ru</small></th>
+            <th><small>example</small></th>
         </tr>
         <?php
         $arr = $response;
@@ -19,6 +20,7 @@ if (count($response) >= 1) {
         $id = 0;
         //var_dump($arr);
         $switch = 1;
+        $switchEx = 1;
         foreach ($arr as $key => $value) {
             foreach ($arr[$key] as $keyfield => $valuefield) {
                 if ($keyfield == 'id_en') {
@@ -40,6 +42,14 @@ if (count($response) >= 1) {
                 }
                 if ($keyfield == 'ua_word') {
                     print "<td>" . $valuefield . " </td>";
+                }
+                if ($keyfield == 'example') {
+                    if ($switchEx == 1) {
+                        print "<td>" . $valuefield . " </td>";
+                    } else {
+                        print "<td></td>";
+                    }
+                    $switchEx = 0;
                 }
             };
             print "</tr>";

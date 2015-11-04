@@ -2,8 +2,8 @@
 include 'head.html';
 ?>
 <ul>
-    <li><a href="../view/add.php">Add word</a></li>
-    <li><a href="../view/find.php">Find word</a></li>
+    <li><b><a href="../view/add.php" style="color: #5B5B5B;">Add word</a></b></li>
+    <li><b><a href="../view/find.php" style="color: #5B5B5B">Find word</a></b></li>
 </ul>
 <div id="links">
     <form method="POST" action="../index.php">

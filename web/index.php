@@ -22,6 +22,7 @@ if (isset($_POST['create'])) {
     $word->crEngWord();
     $word->crUaWord();
     $word->crExample();
+    $word->crConnectExample();
 }
 
 if (isset($_POST['find_all'])) {
@@ -38,6 +39,7 @@ if (isset($_POST['find_by_name'])) {
     if (isset($_POST['eng_word']) && $_POST['eng_word'] != ""){
         $ins = new Vocabulary($stmt);
         $response = $ins->findByName($_POST);
+        //var_dump($_POST);
         include './view/showWord.php';
     } else {
         echo '<p>word <b>not set!</b></p>';
