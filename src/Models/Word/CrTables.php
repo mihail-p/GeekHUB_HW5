@@ -59,5 +59,17 @@ class CrTables extends ConnectBase
         } else {
             echo 'Table "example" was created<br />';
         }
+    }public function crConnectExample()
+    {
+        $query = "
+           CREATE TABLE IF NOT EXISTS con_ex (
+           id_w INT ,
+           id_ex INT )";
+        $result = $this->connector->exec($query);
+        if ($result === false) {
+            echo 'Table "con_ex" NOT created<br />';
+        } else {
+            echo 'Table "con_ex" was created<br />';
+        }
     }
 }

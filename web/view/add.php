@@ -3,9 +3,9 @@
 require __DIR__ . '/../../config/autoload.php';
 
 use Layer\Connector\ConnectBase;
-
 use Models\Word\EngWord;
 use Models\Word\UaWord;
+use Models\Word\ConnExample;
 
 include 'head.html';
 
@@ -44,6 +44,13 @@ if (isset($_POST['ua_word']) && ($_POST['eng_word'] != "")) {
     $_POST['id_en'] = $response['id_en'];
     $ins = new UaWord($stmt);
     $ins->insert($_POST);
+}
+if (isset($_POST['example'])) {
+    if (isset($_POST['eng_word']) && ($_POST['eng_word'] != "")) {
+        $ins = new ConnExample($stmt);
+        $ins->insertEx($_POST);
+        $ins->insertConEx($_POST);
+    }
 }
 
 $dbh->connectClose($dbh);
