@@ -64,7 +64,7 @@ class CrTables extends ConnectBase
         $query = "
            CREATE TABLE IF NOT EXISTS con_ex (
            id_w INT ,
-           id_ex INT )";
+           id_exl INT )";
         $result = $this->connector->exec($query);
         if ($result === false) {
             echo 'Table "con_ex" NOT created<br />';
