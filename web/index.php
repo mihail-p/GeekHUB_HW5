@@ -7,6 +7,7 @@ use Models\Word\CrTables;
 use Models\Word\Vocabulary;
 use Models\Word\UaWord;
 use Models\Word\EngWord;
+use Models\Word\ConnExample;
 
 $user = $config['db_user'];
 $pass = $config['db_password'];
@@ -44,7 +45,6 @@ if (isset($_POST['find_by_name'])) {
     } else {
         echo '<p>word <b>not set!</b></p>';
     }
-
 }
 if (isset($_POST['more_trans'])) {
     $ins = new UaWord($stmt);
@@ -53,6 +53,22 @@ if (isset($_POST['more_trans'])) {
 if (isset($_POST['update'])) {
     $ins = new UaWord($stmt);
     $ins->update($_POST);
+}
+if (isset($_POST['update_ex'])) {
+        if (isset($_POST['eng_word']) && $_POST['eng_word'] != ""){
+            $ins = new Vocabulary($stmt);
+            $response = $ins->findByName($_POST);
+            if (count($response) >= 1) {
+                $ins = new ConnExample($stmt);
+                $ins->insertConEx($_POST);
+                echo "2: "; var_dump($_POST);
+                echo "example add to word: ".$_POST['eng_word'];
+            } else {
+                echo '<p>word not found</p>';
+            }
+        } else {
+            echo '<p>word <b>not set!</b></p>';
+        }
 }
 if (isset($_POST['remove'])) {
     $ins = new EngWord($stmt);

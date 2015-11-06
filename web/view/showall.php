@@ -41,8 +41,9 @@
             }
             if ($keyfield == 'example') {
                 print "<td>" . $valuefield . " </td>";
+                $example = $valuefield;
 
-                echo "<td><a href=./view/edit.php?update=1&eng_word=$eng_word&id_ua=$id_ua&id_1=$id&ua_word=$ua_word style='color: olivedrab' title='edit translation'>edit</a></td>";
+                echo '<td><a href="./view/edit.php?update=1&eng_word='.$eng_word.'&id_ua='.$id_ua.'&id_1='.$id.'&ua_word='.$ua_word.'&example='.urlencode($example).'" style=\'color: olivedrab\' title=\'edit translation\'>edit</a></td>';
             }
 
 

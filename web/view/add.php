@@ -45,7 +45,8 @@ if (isset($_POST['ua_word']) && ($_POST['eng_word'] != "")) {
     $ins = new UaWord($stmt);
     $ins->insert($_POST);
 }
-if (isset($_POST['example'])) {
+
+if (isset($_POST['example']) && ($_POST['example']) != "") {
     if (isset($_POST['eng_word']) && ($_POST['eng_word'] != "")) {
         $ins = new ConnExample($stmt);
         $ins->insertEx($_POST);
