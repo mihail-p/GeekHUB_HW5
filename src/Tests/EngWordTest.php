@@ -45,7 +45,7 @@ class EngWordTest extends\PHPUnit_Framework_TestCase
         ];
         $stub->method('findName')->willReturn($subArr);
 
-        $this->assertArraySubset([0=>[0, 'id_e', '5']], $stub->findName('query'));
+        $this->assertArraySubset([0=>[0, 'id_en', '5']], $stub->findName('query'));
 
     }
 
