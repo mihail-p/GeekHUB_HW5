@@ -25,8 +25,8 @@ Add word to <b><i>vocabulary</i></b><br/>
     Input <i>ua/ru</i> translation<br/>
     <input type="text" name="ua_word"><br/>
     example<br/>
-    <input type="text" name="example"><br/>
-    <input type="hidden" name="inp_check">
+    <textarea name="example" cols="20" rows="3"></textarea>
+    <input type="hidden" name="inp_check"><br/>
     <input type="submit" value="add data"/>
 </form>
 <?php

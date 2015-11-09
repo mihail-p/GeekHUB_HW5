@@ -61,7 +61,6 @@ if (isset($_POST['update_ex'])) {
             if (count($response) >= 1) {
                 $ins = new ConnExample($stmt);
                 $ins->insertConEx($_POST);
-                echo "2: "; var_dump($_POST);
                 echo "example add to word: ".$_POST['eng_word'];
             } else {
                 echo '<p>word not found</p>';
