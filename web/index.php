@@ -18,60 +18,70 @@ $stmt = $dbh->connect($dsn, $user, $pass);
 $stmt = $dbh->getPdo();
 include './view/main.php';
 
-if (isset($_POST['create'])) {
-    $word = new CrTables($stmt);
-    $word->crEngWord();
-    $word->crUaWord();
-    $word->crExample();
-    $word->crConnectExample();
-}
+$action = isset($_POST['action']) ? $_POST['action'] : '';
 
-if (isset($_POST['find_all'])) {
-    $ins = new Vocabulary($stmt);
-    $response = $ins->findAll();
-    include './view/showall.php';
-}
-if (isset($_POST['find_all_vocab'])) {
-    $ins = new Vocabulary($stmt);
-    $response = $ins->findAllVocab();
-    include './view/showall.php';
-}
-if (isset($_POST['find_by_name'])) {
-    if (isset($_POST['eng_word']) && $_POST['eng_word'] != ""){
+switch ($action) {
+    case 'create':
+        $word = new CrTables($stmt);
+        $word->crEngWord();
+        $word->crUaWord();
+        $word->crExample();
+        $word->crConnectExample();
+        break;
+
+    case 'find_all':
         $ins = new Vocabulary($stmt);
-        $response = $ins->findByName($_POST);
-        //var_dump($_POST);
-        include './view/showWord.php';
-    } else {
-        echo '<p>word <b>not set!</b></p>';
-    }
-}
-if (isset($_POST['more_trans'])) {
-    $ins = new UaWord($stmt);
-    $ins->insert($_POST);
-}
-if (isset($_POST['update'])) {
-    $ins = new UaWord($stmt);
-    $ins->update($_POST);
-}
-if (isset($_POST['update_ex'])) {
-        if (isset($_POST['eng_word']) && $_POST['eng_word'] != ""){
+        $response = $ins->findAll();
+        include './view/showall.php';
+        break;
+
+    case 'find_all_vocab':
+        $ins = new Vocabulary($stmt);
+        $response = $ins->findAllVocab();
+        include './view/showall.php';
+        break;
+
+    case 'find_by_name':
+        if (isset($_POST['eng_word']) && $_POST['eng_word'] != "") {
+            $ins = new Vocabulary($stmt);
+            $response = $ins->findByName($_POST);
+            //var_dump($_POST);
+            include './view/showWord.php';
+        } else {
+            echo '<p>word <b>not set!</b></p>';
+        }
+        break;
+
+    case 'more_trans':
+        $ins = new UaWord($stmt);
+        $ins->insert($_POST);
+        break;
+
+    case 'update':
+        $ins = new UaWord($stmt);
+        $ins->update($_POST);
+        break;
+
+    case 'update_ex':
+        if (isset($_POST['eng_word']) && $_POST['eng_word'] != "") {
             $ins = new Vocabulary($stmt);
             $response = $ins->findByName($_POST);
             if (count($response) >= 1) {
                 $ins = new ConnExample($stmt);
                 $ins->insertConEx($_POST);
-                echo "example add to word: ".$_POST['eng_word'];
+                echo "example add to word: " . $_POST['eng_word'];
             } else {
                 echo '<p>word not found</p>';
             }
         } else {
             echo '<p>word <b>not set!</b></p>';
         }
-}
-if (isset($_POST['remove'])) {
-    $ins = new EngWord($stmt);
-    $ins->remove($_POST);
+        break;
+
+    case 'remove':
+        $ins = new EngWord($stmt);
+        $ins->remove($_POST);
+        break;
 }
 
 $dbh->connectClose($dbh);

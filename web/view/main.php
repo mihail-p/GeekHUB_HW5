@@ -7,9 +7,9 @@ include 'head.html';
 </ul>
 <div id="links">
     <form method="POST" action="../index.php">
-        <button name="create" value="create"> Initialize DB</button>
-        <button name="find_all" value="find_all">Show all data <b><small style="color: darkgreen">JOIN</small></b></button>
-        <button name="find_all_vocab" value="find_all">Show all vocabulary <b><small style="color: green">JOIN</small></b></button>
+        <button name="action" value="create"> Initialize DB</button>
+        <button name="action" value="find_all">Show all data <b><small style="color: darkgreen">JOIN</small></b></button>
+        <button name="action" value="find_all_vocab">Show all vocabulary <b><small style="color: green">JOIN</small></b></button>
     </form>
 </div>
 

@@ -43,7 +43,7 @@
                 print "<td>" . $valuefield . " </td>";
                 $example = $valuefield;
 
-                echo '<td><a href="./view/edit.php?update=1&eng_word='.$eng_word.'&id_ua='.$id_ua.'&id_1='.$id.'&ua_word='.$ua_word.'&example='.urlencode($example).'" style=\'color: olivedrab\' title=\'edit translation\'>edit</a></td>';
+                echo '<td><a href="./view/edit.php?action=update&eng_word='.$eng_word.'&id_ua='.$id_ua.'&id_1='.$id.'&ua_word='.$ua_word.'&example='.urlencode($example).'" style=\'color: olivedrab\' title=\'edit translation\'>edit</a></td>';
             }
 
 
@@ -54,7 +54,7 @@
 </table>
 <form method="post" action="../index.php">
     <p>Remove <i>english</i> word with id:
-        <input type="hidden" name="remove">
+        <input type="hidden" name="action" value="remove">
         <input type="text" name="id_en" maxlength="2" size="2">
         <input type="submit" value="remove">
     </p>
